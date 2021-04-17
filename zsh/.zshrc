@@ -2,10 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # 获取主机 IP
 # 主机 IP 保存在 /etc/resolv.conf 中
+# export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
+# export https_proxy="http://${hostip}:7890";
+# export http_proxy="http://${hostip}:7890";
+# export all_proxy="socks5://${hostip}:7891";
+
 export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
-export https_proxy="http://${hostip}:7890";
-export http_proxy="http://${hostip}:7890";
-export all_proxy="socks5://${hostip}:7891";
+alias setss='export https_proxy="http://${hostip}:7890";export http_proxy="http://${hostip}:7890";export all_proxy="socks5://${hostip}:7891";'
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/doa/.oh-my-zsh"
